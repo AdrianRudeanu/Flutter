@@ -12,21 +12,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Money Convertor'),
+      home: const MyHomePage(title: 'Money Convertor'),
     );
   }
 }
 
-
-bool _isNumeric(String result) {
-  if (result == null) {
-    return false;
-  }
-  return double.tryParse(result) != null;
-}
-
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  const MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -36,8 +28,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  final _formKey = GlobalKey<FormState>();
-  final myController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController myController = TextEditingController();
   double valEur;
 
   bool _isNumeric(String result) {
@@ -63,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child:Column(
                 children: <Widget>[
                   TextFormField(
-                    validator:(value){
+                    validator:(String value){
                       if(!_isNumeric(value)){
                         return 'Nu este nr.';
                       }
@@ -71,11 +63,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     controller: myController,
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         hintText: 'enter the ammount in EUR'
                     ),
                   ),
-
                 ]
               )
             ),
@@ -87,10 +78,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   });
                 }
               },
-              child: Text('Convert'),
+              child: const Text('Convert'),
             ),
             Text(
-              "$valEur"
+              '$valEur'
             ),
           ],
         ),
