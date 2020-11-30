@@ -4,6 +4,9 @@ on: push
 jobs:
   format:
     runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            module:[tema_1, tema2,tema2_2]
     env:
       CI_JOB_NAME: format
     steps:
@@ -13,7 +16,9 @@ jobs:
           channel: stable
       - uses: actions/checkout@v2
       - name: Setup repository
-        run: flutter pub get
+        run: | 
+            cd ${{matrix.module }}
+            flutter pub get
       - name: Format code
         run: flutter pub pub run --enable-asserts ci/bots/format.dart --set-exit-if-changed -n -l 120
 
