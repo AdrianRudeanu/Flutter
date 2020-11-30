@@ -27,7 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController myController = TextEditingController();
   double valEur;
@@ -44,32 +43,27 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        centerTitle:true,
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
           children: <Widget>[
             Image.network('https://cdn.pixabay.com/photo/2014/10/23/10/10/dollars-499481_1280.jpg'),
             Form(
-              key:_formKey,
-              child:Column(
-                children: <Widget>[
+                key: _formKey,
+                child: Column(children: <Widget>[
                   TextFormField(
-                    validator:(String value){
-                      if(!_isNumeric(value)){
+                    validator: (String value) {
+                      if (!_isNumeric(value)) {
                         return 'Nu este nr.';
                       }
                       return null;
                     },
                     controller: myController,
                     keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
-                        hintText: 'enter the ammount in EUR'
-                    ),
+                    decoration: const InputDecoration(hintText: 'enter the ammount in EUR'),
                   ),
-                ]
-              )
-            ),
+                ])),
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState.validate()) {
@@ -80,9 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text('Convert'),
             ),
-            Text(
-              '$valEur'
-            ),
+            Text('$valEur'),
           ],
         ),
       ),

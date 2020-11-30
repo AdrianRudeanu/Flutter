@@ -39,30 +39,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void showText() {
     setState(() {
-      if(guessReset == 'Guess'){
-        if(numberToGuess == -1){
+      if (guessReset == 'Guess') {
+        if (numberToGuess == -1) {
           Random rng = Random();
           numberToGuess = rng.nextInt(100);
-        }else{
+        } else {
           number = int.parse(myController.text);
           _isVisible = true;
-          if(number<numberToGuess){
+          if (number < numberToGuess) {
             result = 'Try lower';
-          }
-          else if(number > numberToGuess){
+          } else if (number > numberToGuess) {
             result = 'Try higher';
-          }
-          else{
+          } else {
             result = 'You did it!';
             guessReset = 'Reset';
           }
         }
-      }
-      else{
+      } else {
         _isVisible = false;
         guessReset = 'Guess';
       }
-
     });
   }
 
@@ -79,15 +75,13 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'I am thinking of a number between 1 and 100.',
             ),
-            const Text(
-              "It's your turn to guess my number."
-            ),
+            const Text("It's your turn to guess my number."),
             Visibility(
               visible: _isVisible,
               child: Text('You tried $number \n $result'),
             ),
             Card(
-              child:Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   const Text('Try a number!'),
@@ -95,12 +89,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     controller: myController,
                   ),
                   FlatButton(
-                    onPressed: (){
+                    onPressed: () {
                       showText();
                     },
-                    child: Text(
-                      '$guessReset'
-                    ),
+                    child: Text('$guessReset'),
                   ),
                 ],
               ),

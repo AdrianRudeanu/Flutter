@@ -69,7 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
@@ -91,13 +90,11 @@ class _MyHomePageState extends State<MyHomePage> {
               builder: (context) {
                 return AlertDialog(
                   title: Text("$number"),
-                  content: Text(
-                      "Number $number is both SQUARE and TRIANGULAR."),
+                  content: Text("Number $number is both SQUARE and TRIANGULAR."),
                 );
               },
             );
-          }
-          else if (_isSquare(number)) {
+          } else if (_isSquare(number)) {
             return showDialog<void>(
               context: context,
               builder: (context) {
@@ -107,8 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             );
-          }
-          else if (_isTriangle(number)) {
+          } else if (_isTriangle(number)) {
             return showDialog<void>(
               context: context,
               builder: (context) {
@@ -118,15 +114,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             );
-          }
-          else {
+          } else {
             return showDialog<void>(
               context: context,
               builder: (context) {
                 return AlertDialog(
                   title: Text("$number"),
-                  content: Text(
-                      "Number $number is neither SQUARE and TRIANGULAR."),
+                  content: Text("Number $number is neither SQUARE and TRIANGULAR."),
                 );
               },
             );
