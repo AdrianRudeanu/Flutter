@@ -35,10 +35,10 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
 
-  bool _isSquare(int number){
+  bool _isSquare(int number) {
     int aux = 0;
-    while(aux <= number){
-      if(aux*aux == number){
+    while (aux <= number) {
+      if (aux * aux == number) {
         return true;
       }
       aux++;
@@ -46,18 +46,18 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return false;
   }
-  
-  bool _isTriangle(int number){
+
+  bool _isTriangle(int number) {
     int aux = 0;
     int sum = 0;
-    while(sum<=number){
-      if(sum == number){
+    while (sum <= number) {
+      if (sum == number) {
         return true;
       }
       sum = sum + aux;
       aux++;
     }
-    
+
     return false;
   }
 
@@ -82,21 +82,22 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
+        onPressed: () {
           int number = int.parse(myController.text);
 
-          if(_isSquare(number) && _isTriangle(number)){
+          if (_isSquare(number) && _isTriangle(number)) {
             return showDialog<void>(
               context: context,
               builder: (context) {
                 return AlertDialog(
                   title: Text("$number"),
-                  content: Text("Number $number is both SQUARE and TRIANGULAR."),
+                  content: Text(
+                      "Number $number is both SQUARE and TRIANGULAR."),
                 );
               },
             );
           }
-          else if(_isSquare(number)){
+          else if (_isSquare(number)) {
             return showDialog<void>(
               context: context,
               builder: (context) {
@@ -107,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             );
           }
-          else if(_isTriangle(number)){
+          else if (_isTriangle(number)) {
             return showDialog<void>(
               context: context,
               builder: (context) {
@@ -118,13 +119,14 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             );
           }
-          else{
+          else {
             return showDialog<void>(
               context: context,
               builder: (context) {
                 return AlertDialog(
                   title: Text("$number"),
-                  content: Text("Number $number is neither SQUARE and TRIANGULAR."),
+                  content: Text(
+                      "Number $number is neither SQUARE and TRIANGULAR."),
                 );
               },
             );
